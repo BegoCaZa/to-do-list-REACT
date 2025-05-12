@@ -32,15 +32,21 @@ const MainContainer = () => {
 
       <div className='filters'>
         <button
-          className='filter filter-active'
+          className={`filter ${filter === 'all' ? 'filter-active' : ''}`}
           onClick={() => setFilter('all')}
         >
           All
         </button>
-        <button className='filter' onClick={() => setFilter('active')}>
+        <button
+          className={`filter ${filter === 'active' ? 'filter-active' : ''}`}
+          onClick={() => setFilter('active')}
+        >
           Active
         </button>
-        <button className='filter' onClick={() => setFilter('completed')}>
+        <button
+          className={`filter ${filter === 'completed' ? 'filter-active' : ''}`}
+          onClick={() => setFilter('completed')}
+        >
           Completed
         </button>
       </div>
