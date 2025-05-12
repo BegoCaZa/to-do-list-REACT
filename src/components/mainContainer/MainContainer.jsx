@@ -12,11 +12,17 @@ const MainContainer = () => {
     }
   ]);
 
+  //filtro de tareas
+  const [filter, setFilter] = useState('all');
+
+  const filteredTasks = filerTasks(tasks, filter);
+  //llamo a la funcion que filtra las tareas y le paso el array de tareas y el filtro
+
   return (
     <div className='main'>
       <Form tasks={tasks} setTasks={setTasks} />
       {/* le doy las propiedades de tasks y setTasks al form que vienen del estado */}
-      <TaskList tasks={tasks} setTasks={setTasks} />
+      <TaskList tasks={filteredTasks} setTasks={setTasks} />
       {/* le doy las propiedades de tasks y setTasks al taskList que vienen del estado */}
 
       <div className='list-footer'>
@@ -25,12 +31,35 @@ const MainContainer = () => {
       </div>
 
       <div className='filters'>
-        <button className='filter filter-active'>All</button>
-        <button className='filter'>Active</button>
-        <button className='filter'>Completed</button>
+        <button
+          className='filter filter-active'
+          onClick={() => setFilter('all')}
+        >
+          All
+        </button>
+        <button className='filter' onClick={() => setFilter('active')}>
+          Active
+        </button>
+        <button className='filter' onClick={() => setFilter('active')}>
+          Completed
+        </button>
       </div>
     </div>
   );
+};
+
+const filerTasks = (tasks, filter) => {
+  //recibe todas las tareas y el filtro
+  if (filter === 'all') {
+    return tasks; //si el filtro es all, regresa todas las tareas
+  }
+  if (filter === 'active') {
+    return tasks.filter(task => !task.completed); //si el filtro es active, regresa las tareas que no estan completas
+  }
+  if (filter === 'completed') {
+    return tasks.filter(task => task.completed); //si el filtro es completed, regresa las tareas que estan completas
+  }
+  return tasks; //si no es ninguno de los anteriores, regresa todas las tareas
 };
 
 export default MainContainer;
