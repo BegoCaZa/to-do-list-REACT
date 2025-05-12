@@ -20,7 +20,7 @@ const MainContainer = () => {
       {/* le doy las propiedades de tasks y setTasks al taskList que vienen del estado */}
 
       <div className='list-footer'>
-        <span>0 items left</span>
+        <span>{tasks.length} items left</span>
         <span>Clear Completed</span>
       </div>
 
