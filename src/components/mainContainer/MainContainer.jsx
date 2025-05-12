@@ -23,7 +23,7 @@ const MainContainer = () => {
       <Form tasks={tasks} setTasks={setTasks} />
       {/* le doy las propiedades de tasks y setTasks al form que vienen del estado */}
       <TaskList tasks={filteredTasks} setTasks={setTasks} />
-      {/* le doy las propiedades de tasks y setTasks al taskList que vienen del estado */}
+      {/* le doy las propiedades de tasks filtradas y setTasks al taskList que vienen del estado */}
 
       <div className='list-footer'>
         <span>{tasks.length} items left</span>
@@ -40,7 +40,7 @@ const MainContainer = () => {
         <button className='filter' onClick={() => setFilter('active')}>
           Active
         </button>
-        <button className='filter' onClick={() => setFilter('active')}>
+        <button className='filter' onClick={() => setFilter('completed')}>
           Completed
         </button>
       </div>
@@ -59,7 +59,6 @@ const filerTasks = (tasks, filter) => {
   if (filter === 'completed') {
     return tasks.filter(task => task.completed); //si el filtro es completed, regresa las tareas que estan completas
   }
-  return tasks; //si no es ninguno de los anteriores, regresa todas las tareas
 };
 
 export default MainContainer;
