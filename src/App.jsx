@@ -1,15 +1,6 @@
 import { useState } from 'react';
 import { v4 } from 'uuid';
 
-const tasksList = [
-  {
-    completed: false,
-    id: v4(),
-    task: 'Make a to do list',
-    img: './assets/icon-cross.svg'
-  }
-];
-
 const completeTask = complete => {
   if (complete) {
     tasksList.completed = true;
@@ -17,8 +8,13 @@ const completeTask = complete => {
 };
 
 const App = () => {
-  const [complete, setComplete] = useState(false);
-  console.log(complete);
+  const [tasks, setTasks] = useState([
+    {
+      completed: false,
+      id: v4(),
+      task: 'Make a to do list'
+    }
+  ]);
 
   return (
     <div className='general-container'>
@@ -56,8 +52,7 @@ const App = () => {
               <img
                 id='delete-button'
                 className='delete-button'
-                src={task.img}
-                alt='delete button'
+                src='/assets/icon-cross.svg'
               />
             </div>
           ))}
