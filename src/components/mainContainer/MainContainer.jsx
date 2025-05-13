@@ -15,7 +15,8 @@ const MainContainer = () => {
   ]);
 
   //filtro de tareas
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState('All');
+  //tiene que esta en el main porque es el padre
 
   const filteredTasks = filterTasks(tasks, filter);
   //llamo a la funcion que filtra las tareas y le paso el array de tareas y el filtro
@@ -23,56 +24,29 @@ const MainContainer = () => {
   return (
     <div className={styles.main}>
       <Form tasks={tasks} setTasks={setTasks} />
-      {/* le doy las propiedades de tasks y setTasks al form que vienen del estado */}
-      <TaskList tasks={filteredTasks} setTasks={setTasks} />
-      {/* le doy las propiedades de tasks filtradas y setTasks al taskList que vienen del estado */}
+      {/* le doy las PROPIEDAD de tasks y setTasks al form que vienen del estado*/}
+      <TaskList filteredTasks={filteredTasks} setTasks={setTasks} />
+      {/* le doy las PROPIEDAD de tasks filtradas y setTasks al taskList que vienen del estado-- recuerda que depende del nombre que le asignes a la propiedad */}
 
-      <Filters tasks={filteredTasks} filter={filter} setFilter={setFilter} />
-
-      {/* <div className={styles.listFooter}>
-        <span>{tasks.length} items left</span>
-        <span>Clear Completed</span>
-      </div>
-
-      <div className={styles.filters}>
-        <button
-          className={`${styles.filter} ${
-            filter === 'all' ? `${styles.filterActive}` : ''
-          }`}
-          onClick={() => setFilter('all')}
-        >
-          All
-        </button>
-        <button
-          className={`${styles.filter} ${
-            filter === 'active' ? `${styles.filterActive}` : ''
-          }`}
-          onClick={() => setFilter('active')}
-        >
-          Active
-        </button>
-        <button
-          className={`${styles.filter} ${
-            filter === 'completed' ? `${styles.filterActive}` : ''
-          }`}
-          onClick={() => setFilter('completed')}
-        >
-          Completed
-        </button>
-      </div> */}
+      <Filters
+        filteredTasks={filteredTasks}
+        filter={filter}
+        setFilter={setFilter}
+      />
+      {/* recibe la funcion que cambia el estado del FILTRO, el FILTRO que edita el contenido del array y el array ya FILTRADO */}
     </div>
   );
 };
 
 const filterTasks = (tasks, filter) => {
   //recibe todas las tareas y el filtro
-  if (filter === 'all') {
+  if (filter === 'All') {
     return tasks; //si el filtro es all, regresa todas las tareas
   }
-  if (filter === 'active') {
+  if (filter === 'Active') {
     return tasks.filter(task => !task.completed); //si el filtro es active, regresa las tareas que no estan completas
   }
-  if (filter === 'completed') {
+  if (filter === 'Completed') {
     return tasks.filter(task => task.completed); //si el filtro es completed, regresa las tareas que estan completas
   }
 };

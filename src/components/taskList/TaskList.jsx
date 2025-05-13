@@ -1,17 +1,17 @@
 import styles from './taskList.module.css';
 
-const TaskList = ({ tasks, setTasks }) => {
+const TaskList = ({ filteredTasks, setTasks }) => {
   return (
     //   recibe las tareas desde el main y las pinta
     <div className={styles.listContainer}>
-      {tasks.map(task => (
+      {filteredTasks.map(task => (
         <div key={task.id} className={styles.taskContainer}>
           <input
             className={styles.checkbox}
             type='checkbox'
             id={task.id}
             checked={task.completed}
-            onChange={() => completeTask(task.id, tasks, setTasks)}
+            onChange={() => completeTask(task.id, filteredTasks, setTasks)}
           />
           <label htmlFor={task.id} className={styles.taskLabel}>
             {task.taskText}
@@ -20,7 +20,7 @@ const TaskList = ({ tasks, setTasks }) => {
             id='delete-button'
             className={styles.deleteButton}
             src='/assets/icon-cross.svg'
-            onClick={() => deleteTask(task.id, tasks, setTasks)}
+            onClick={() => deleteTask(task.id, filteredTasks, setTasks)}
           />
         </div>
       ))}
@@ -36,6 +36,10 @@ const completeTask = (id, tasks, setTasks) => {
       //cambia el estado de la tarea y la regresa
       return { ...task, completed: !task.completed };
     }
+
+    //version corta
+    //const foundedTask = tasks.find(task => task.id === id);
+    //foundedTask.completed = !foundedTask.completed;
     //si no es la misma tarea, regresa la tarea sin cambios
     return task;
   });

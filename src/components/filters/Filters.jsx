@@ -1,25 +1,41 @@
 import styles from './Filters.module.css';
 
-const Filters = ({ tasks, filter, setFilter }) => {
+const Filters = ({ filteredTasks, filter, setFilter }) => {
+  const filterOptions = ['All', 'Active', 'Completed']; //para el bucle
+
   return (
     <>
       <div className={styles.listFooter}>
-        <span>{tasks.length} items left</span>
+        <span>{filteredTasks.length} items left</span>
         <span>Clear Completed</span>
       </div>
 
       <div className={styles.filters}>
-        <button
+        {filterOptions.map(option => (
+          <button
+            key={option}
+            className={`${styles.filter} ${
+              filter === option && `${styles.filterActive}`
+            }`}
+            onClick={() => setFilter(option)}
+          >
+            {option}
+          </button>
+        ))}
+
+        {/* //   <button
+        {/* <button
           className={`${styles.filter} ${
-            filter === 'all' ? `${styles.filterActive}` : ''
+            filter === 'all' && `${styles.filterActive}`
           }`}
+          //   operador binario--cuando el ELSE no es NADA
           onClick={() => setFilter('all')}
         >
           All
         </button>
         <button
           className={`${styles.filter} ${
-            filter === 'active' ? `${styles.filterActive}` : ''
+            filter === 'active' && `${styles.filterActive}`
           }`}
           onClick={() => setFilter('active')}
         >
@@ -27,12 +43,12 @@ const Filters = ({ tasks, filter, setFilter }) => {
         </button>
         <button
           className={`${styles.filter} ${
-            filter === 'completed' ? `${styles.filterActive}` : ''
+            filter === 'completed' && `${styles.filterActive}`
           }`}
           onClick={() => setFilter('completed')}
         >
           Completed
-        </button>
+        </button> */}
       </div>
     </>
   );
