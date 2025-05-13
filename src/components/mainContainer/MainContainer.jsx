@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { v4 } from 'uuid';
 import Form from '../form/Form';
 import TaskList from '../taskList/TaskList';
+import styles from './mainContainer.module.css';
 
 const MainContainer = () => {
   const [tasks, setTasks] = useState([
@@ -19,32 +20,38 @@ const MainContainer = () => {
   //llamo a la funcion que filtra las tareas y le paso el array de tareas y el filtro
 
   return (
-    <div className='main'>
+    <div className={styles.main}>
       <Form tasks={tasks} setTasks={setTasks} />
       {/* le doy las propiedades de tasks y setTasks al form que vienen del estado */}
       <TaskList tasks={filteredTasks} setTasks={setTasks} />
       {/* le doy las propiedades de tasks filtradas y setTasks al taskList que vienen del estado */}
 
-      <div className='list-footer'>
+      <div className={styles.listFooter}>
         <span>{tasks.length} items left</span>
         <span>Clear Completed</span>
       </div>
 
-      <div className='filters'>
+      <div className={styles.filters}>
         <button
-          className={`filter ${filter === 'all' ? 'filter-active' : ''}`}
+          className={`${styles.filter} ${
+            filter === 'all' ? `${styles.filterActive}` : ''
+          }`}
           onClick={() => setFilter('all')}
         >
           All
         </button>
         <button
-          className={`filter ${filter === 'active' ? 'filter-active' : ''}`}
+          className={`${styles.filter} ${
+            filter === 'active' ? `${styles.filterActive}` : ''
+          }`}
           onClick={() => setFilter('active')}
         >
           Active
         </button>
         <button
-          className={`filter ${filter === 'completed' ? 'filter-active' : ''}`}
+          className={`${styles.filter} ${
+            filter === 'completed' ? `${styles.filterActive}` : ''
+          }`}
           onClick={() => setFilter('completed')}
         >
           Completed

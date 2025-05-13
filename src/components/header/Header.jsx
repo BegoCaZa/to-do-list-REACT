@@ -1,8 +1,10 @@
+import styles from './header.module.css';
+
 const Header = () => {
   return (
-    <div className='header'>
-      <div className='header-bar'>
-        <h1 className='header-title'>TO DO LIST</h1>
+    <div className={styles.headerContainer}>
+      <div className={styles.headerBar}>
+        <h1 className={styles.headerTitle}>TO DO LIST</h1>
       </div>
     </div>
   );

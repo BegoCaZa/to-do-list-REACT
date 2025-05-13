@@ -1,0 +1,62 @@
+/* Task List */
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-taskbg);
+  border-radius: 8px 8px 0 0;
+  box-shadow: var(--shadow-color);
+}
+
+.taskContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: var(--color-taskbg);
+  border-radius: 8px;
+}
+
+.checkbox {
+  display: none;
+}
+
+.taskLabel {
+  font-size: 1rem;
+  color: var(--color-taskfont);
+  position: relative;
+  padding-left: 40px;
+}
+
+/* circulo check */
+.taskLabel::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: -3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #a0a0b0;
+}
+
+.checkbox:checked + .taskLabel {
+  background-color: var(--color-taskbg);
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+.checkbox:checked + .taskLabel::before {
+  background-image: url(../assets/icon-check.svg),
+    linear-gradient(45deg, #55ddff, #c058f3);
+  background-repeat: no-repeat;
+  background-size: 10px 8px, cover;
+  background-position: center;
+  border: none;
+}
+
+.deleteButton {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}

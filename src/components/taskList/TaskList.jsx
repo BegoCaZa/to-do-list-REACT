@@ -1,22 +1,24 @@
+import styles from './taskList.module.css';
+
 const TaskList = ({ tasks, setTasks }) => {
   return (
     //   recibe las tareas desde el main y las pinta
-    <div className='to-do-list'>
+    <div className={styles.listContainer}>
       {tasks.map(task => (
-        <div key={task.id} className='task-container'>
+        <div key={task.id} className={styles.taskContainer}>
           <input
-            className='checkbox'
+            className={styles.checkbox}
             type='checkbox'
             id={task.id}
             checked={task.completed}
             onChange={() => completeTask(task.id, tasks, setTasks)}
           />
-          <label htmlFor={task.id} className='task-label'>
+          <label htmlFor={task.id} className={styles.taskLabel}>
             {task.taskText}
           </label>
           <img
             id='delete-button'
-            className='delete-button'
+            className={styles.deleteButton}
             src='/assets/icon-cross.svg'
             onClick={() => deleteTask(task.id, tasks, setTasks)}
           />
