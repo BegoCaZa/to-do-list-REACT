@@ -1,21 +1,22 @@
 import { v4 } from 'uuid';
+import styles from './form.module.css';
 
 const Form = ({ tasks, setTasks }) => {
   return (
     <form
-      className='form'
+      className={styles.form}
       onSubmit={event => createNewTask(event, tasks, setTasks)}
       //   tiene que ir aqui el PUTO EVENTO!
     >
       {/* // que el evento llame a la funcion que crea la nueva tarea de acuerdo al
       primer array */}
-      <label htmlFor='input-to-do' className='label-circle'></label>
+      <label htmlFor='input-to-do' className={styles.labelCircle}></label>
       <input
         type='text'
         name='taskText'
         //tengo que asignar esta propiedad para poder imprimir el valor del input
         id='input-to-do'
-        className='input'
+        className={styles.input}
         placeholder='Create a new task...'
       />
     </form>

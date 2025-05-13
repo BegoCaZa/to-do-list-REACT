@@ -48,35 +48,3 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
-.form {
-  align-items: center;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 20px;
-  background: var(--color-taskbg);
-  color: var(--color-placeholder);
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: var(--shadow-color);
-  padding: 15px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.label-circle {
-  width: 20px;
-  height: 20px;
-  border: var(--border-checkbox);
-  border-radius: 10px;
-  background-color: var(--color-taskbg);
-}
-
-.input {
-  border: none;
-  background: none;
-  font-size: 1rem;
-  color: var(--color-placeholder);
-  outline: none;
-}
