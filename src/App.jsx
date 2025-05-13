@@ -7,7 +7,6 @@ const App = () => {
     <div className='general-container'>
       <Header />
       <MainContainer />
-      {/* <Filters /> */}
     </div>
   );
 };

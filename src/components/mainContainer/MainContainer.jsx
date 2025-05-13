@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 import Form from '../form/Form';
 import TaskList from '../taskList/TaskList';
 import styles from './mainContainer.module.css';
+import Filters from '../filters/Filters';
 
 const MainContainer = () => {
   const [tasks, setTasks] = useState([
@@ -16,7 +17,7 @@ const MainContainer = () => {
   //filtro de tareas
   const [filter, setFilter] = useState('all');
 
-  const filteredTasks = filerTasks(tasks, filter);
+  const filteredTasks = filterTasks(tasks, filter);
   //llamo a la funcion que filtra las tareas y le paso el array de tareas y el filtro
 
   return (
@@ -26,7 +27,9 @@ const MainContainer = () => {
       <TaskList tasks={filteredTasks} setTasks={setTasks} />
       {/* le doy las propiedades de tasks filtradas y setTasks al taskList que vienen del estado */}
 
-      <div className={styles.listFooter}>
+      <Filters tasks={filteredTasks} filter={filter} setFilter={setFilter} />
+
+      {/* <div className={styles.listFooter}>
         <span>{tasks.length} items left</span>
         <span>Clear Completed</span>
       </div>
@@ -56,12 +59,12 @@ const MainContainer = () => {
         >
           Completed
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-const filerTasks = (tasks, filter) => {
+const filterTasks = (tasks, filter) => {
   //recibe todas las tareas y el filtro
   if (filter === 'all') {
     return tasks; //si el filtro es all, regresa todas las tareas
