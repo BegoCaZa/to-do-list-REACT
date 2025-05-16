@@ -38,8 +38,8 @@ const completeTask = (id, tasks, setTasks) => {
     }
 
     //version corta
-    //const foundedTask = tasks.find(task => task.id === id);
-    //foundedTask.completed = !foundedTask.completed;
+    // const foundedTask = tasks.find(task => task.id === id);
+    // foundedTask.completed = !foundedTask.completed;
     //si no es la misma tarea, regresa la tarea sin cambios
     return task;
   });
